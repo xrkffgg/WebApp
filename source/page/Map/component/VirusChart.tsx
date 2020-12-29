@@ -9,6 +9,7 @@
  * area: 当前选中的国家或省市。
  */
 import {
+    WebCellProps,
     component,
     mixin,
     createCell,
@@ -29,7 +30,7 @@ import {
 } from '../adapter';
 import { area as areaModel } from '../../../model';
 
-interface Props {
+interface Props extends WebCellProps {
     data: OverallCountryData;
     area: string;
     path: string[];
@@ -184,8 +185,8 @@ export class VirusChart extends mixin<Props, State>() {
                     textStyle: {
                         fontSize: this.fixChartFontSize(7)
                     },
-                    formatter: function(params) {
-                        const date = new Date(params);
+                    formatter(time: string | number) {
+                        const date = new Date(time);
 
                         return date.getMonth() + 1 + '/' + date.getDate();
                     }
@@ -263,8 +264,8 @@ export class VirusChart extends mixin<Props, State>() {
                     textStyle: {
                         fontSize: this.fixChartFontSize(7)
                     },
-                    formatter: function(params) {
-                        const date = new Date(params);
+                    formatter(time: string | number) {
+                        const date = new Date(time);
 
                         return date.getMonth() + 1 + '/' + date.getDate();
                     }
@@ -322,7 +323,7 @@ export class VirusChart extends mixin<Props, State>() {
             orderedCountryData = this.getOrderedTimeData(data.countrySeries);
 
         return (
-            <Fragment>
+            <>
                 <CellCharts
                     className="w-100 h-50"
                     chartOptions={this.getConfirmedSuspectChartOptions(
@@ -341,7 +342,7 @@ export class VirusChart extends mixin<Props, State>() {
                         path
                     )}
                 />
-            </Fragment>
+            </>
         );
     }
 }

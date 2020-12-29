@@ -183,12 +183,17 @@ export class FactoryEdit extends mixin<{ dataId: string }, Factory>() {
                         defaultValue={remark}
                     />
                     <div className="form-group mt-3">
-                        <Button type="submit" block disabled={factory.loading}>
+                        <Button
+                            type="submit"
+                            color="primary"
+                            block
+                            disabled={factory.loading}
+                        >
                             提交
                         </Button>
                         <Button
                             type="reset"
-                            kind="danger"
+                            color="danger"
                             block
                             onClick={() => history.push(RouteRoot.Factory)}
                         >

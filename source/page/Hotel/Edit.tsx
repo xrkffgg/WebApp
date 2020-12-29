@@ -164,12 +164,17 @@ export class HotelEdit extends mixin<{ dataId: string }, Hotel>() {
                         label="备注"
                     />
                     <div className="form-group mt-3">
-                        <Button type="submit" block disabled={hotel.loading}>
+                        <Button
+                            type="submit"
+                            color="primary"
+                            block
+                            disabled={hotel.loading}
+                        >
                             提交
                         </Button>
                         <Button
                             type="reset"
-                            kind="danger"
+                            color="danger"
                             block
                             onClick={() => history.push(RouteRoot.Hotel)}
                         >

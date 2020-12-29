@@ -1,5 +1,5 @@
 {
-    "name": "wuhan2020",
+    "name": "wuhan2020-pwa",
     "version": "1.1.0",
     "license": "AGPL-3.0",
     "author": "shiy2008@gmail.com",
@@ -14,42 +14,43 @@
     },
     "main": "source/index.html",
     "dependencies": {
-        "@octokit/rest": "^16.43.1",
-        "boot-cell": "^0.27.0",
+        "boot-cell": "^1.9.1",
         "browser-unhandled-rejection": "^1.0.2",
-        "cell-router": "^2.0.0-rc.6",
+        "cell-router": "^2.0.3",
         "classnames": "^2.2.6",
-        "clipboard-polyfill": "^2.8.6",
-        "core-js": "^3.6.4",
-        "echarts": "^4.6.0",
-        "github-web-widget": "^3.0.0-beta.2",
-        "iterable-observer": "^1.0.0-beta.2",
-        "js-base64": "^2.5.1",
-        "koajax": "^0.5.3",
-        "marked": "^0.8.0",
-        "mobx": "^5.15.4",
-        "mobx-web-cell": "^0.2.5",
-        "web-cell": "^2.0.0-rc.18",
-        "yaml": "^1.7.2"
+        "clipboard-polyfill": "^3.0.1",
+        "echarts": "^4.9.0",
+        "github-web-widget": "^3.0.0-beta.8",
+        "iterable-observer": "^1.0.0-beta.5",
+        "js-base64": "^3.6.0",
+        "koajax": "^0.6.4",
+        "marked": "^1.2.7",
+        "mobx": "^5.15.7",
+        "mobx-web-cell": "^0.3.4",
+        "web-cell": "^2.3.0-beta.4",
+        "web-utility": "^2.2.2",
+        "yaml": "^1.10.0"
     },
     "devDependencies": {
-        "@types/classnames": "^2.2.9",
-        "@types/echarts": "^4.4.3",
-        "@types/js-base64": "^2.3.1",
-        "@types/marked": "^0.7.2",
-        "@types/yaml": "^1.2.0",
-        "@typescript-eslint/parser": "^2.19.2",
-        "autoprefixer": "^9.7.4",
-        "cross-env": "^7.0.0",
-        "eslint": "^6.8.0",
-        "husky": "^4.2.1",
-        "less": "^3.11.1",
-        "lint-staged": "^10.0.7",
+        "@babel/helper-compilation-targets": "^7.12.5",
+        "@octokit/openapi-types": "^2.0.1",
+        "@types/classnames": "^2.2.11",
+        "@types/echarts": "^4.9.3",
+        "@types/js-base64": "^3.0.0",
+        "@types/marked": "^1.2.1",
+        "@types/yaml": "^1.9.7",
+        "@typescript-eslint/parser": "^4.11.1",
+        "autoprefixer": "^9.8.6",
+        "cross-env": "^7.0.3",
+        "eslint": "^7.16.0",
+        "husky": "^4.3.6",
+        "less": "^4.0.0",
+        "lint-staged": "^10.5.3",
         "parcel-bundler": "^1.12.4",
-        "postcss-modules": "^1.5.0",
-        "prettier": "^1.19.1",
-        "typescript": "^3.7.5",
-        "workbox-cli": "^4.3.1"
+        "postcss-modules": "^3.2.2",
+        "prettier": "^2.2.1",
+        "typescript": "^4.1.3",
+        "workbox-cli": "^6.0.2"
     },
     "postcss": {
         "modules": true,
@@ -61,6 +62,8 @@
     },
     "prettier": {
         "singleQuote": true,
+        "trailingComma": "none",
+        "arrowParens": "avoid",
         "tabWidth": 4,
         "overrides": [
             {
@@ -72,9 +75,7 @@
         ]
     },
     "lint-staged": {
-        "*.{html,md,less,json,yml}": [
-            "prettier --write"
-        ],
+        "*.{html,md,less,json,yml}": "prettier --write",
         "*.{js,ts,tsx}": [
             "prettier --write",
             "eslint --fix"

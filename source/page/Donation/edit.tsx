@@ -1,5 +1,7 @@
 import { component, mixin, watch, createCell } from 'web-cell';
 import { FormField } from 'boot-cell/source/Form/FormField';
+import { InputGroup } from 'boot-cell/source/Form/InputGroup';
+import { Field } from 'boot-cell/source/Form/Field';
 import { Button } from 'boot-cell/source/Form/Button';
 
 import { RouteRoot } from '../data/menu';
@@ -68,7 +70,9 @@ export class DonationEdit extends mixin<
     }
 
     addAccount = () =>
-        this.setState({ accounts: [...this.state.accounts, {}] });
+        this.setState({
+            accounts: [...this.state.accounts, {} as BankAccount]
+        });
 
     deleteAccount(index: number) {
         const { accounts } = this.state;
@@ -132,49 +136,44 @@ export class DonationEdit extends mixin<
                     />
                     <FormField label="银行账户信息">
                         {accounts.map(({ name, number, bank }, index) => (
-                            <div
-                                className="input-group my-1"
+                            <InputGroup
+                                className="my-1"
                                 onChange={(event: Event) =>
                                     this.changeAccount(index, event)
                                 }
                             >
-                                <input
-                                    type="text"
-                                    className="form-control"
+                                <Field
                                     name="name"
                                     required
                                     defaultValue={name}
                                     placeholder="户名"
                                 />
-                                <input
-                                    type="text"
-                                    className="form-control"
+                                <Field
                                     name="number"
                                     required
                                     defaultValue={number}
                                     placeholder="账号"
                                 />
-                                <input
-                                    type="text"
-                                    className="form-control"
+                                <Field
                                     name="bank"
                                     required
                                     defaultValue={bank}
                                     placeholder="开户行"
                                 />
-                                <div className="input-group-append">
-                                    <Button onClick={this.addAccount}>+</Button>
-                                    <Button
-                                        kind="danger"
-                                        disabled={!accounts[1]}
-                                        onClick={() =>
-                                            this.deleteAccount(index)
-                                        }
-                                    >
-                                        -
-                                    </Button>
-                                </div>
-                            </div>
+                                <Button
+                                    color="primary"
+                                    onClick={this.addAccount}
+                                >
+                                    +
+                                </Button>
+                                <Button
+                                    color="danger"
+                                    disabled={!accounts[1]}
+                                    onClick={() => this.deleteAccount(index)}
+                                >
+                                    -
+                                </Button>
+                            </InputGroup>
                         ))}
                     </FormField>
 
@@ -193,6 +192,7 @@ export class DonationEdit extends mixin<
                     <div className="form-group mt-3">
                         <Button
                             type="submit"
+                            color="primary"
                             block
                             disabled={donationRecipient.loading}
                         >
@@ -200,7 +200,7 @@ export class DonationEdit extends mixin<
                         </Button>
                         <Button
                             type="reset"
-                            kind="danger"
+                            color="danger"
                             block
                             onClick={() => history.push(RouteRoot.Donation)}
                         >
